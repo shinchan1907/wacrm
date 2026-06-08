@@ -18,6 +18,7 @@ import { PasswordForm } from '@/components/settings/password-form';
 import { SessionsCard } from '@/components/settings/sessions-card';
 import { AppearancePanel } from '@/components/settings/appearance-panel';
 import { MembersTab } from '@/components/settings/members-tab';
+import { QuickReplyManager } from '@/components/settings/quick-reply-manager';
 
 const TAB_VALUES = [
   'profile',
@@ -26,6 +27,7 @@ const TAB_VALUES = [
   'tags',
   'appearance',
   'members',
+  'quick-replies',
 ] as const;
 type TabValue = (typeof TAB_VALUES)[number];
 
@@ -98,6 +100,13 @@ export default function SettingsPage() {
             Appearance
           </TabsTrigger>
           <TabsTrigger
+            value="quick-replies"
+            className="data-active:bg-slate-800 data-active:text-primary text-slate-400"
+          >
+            <MessageSquare className="size-4" />
+            Quick Replies
+          </TabsTrigger>
+          <TabsTrigger
             value="members"
             className="data-active:bg-slate-800 data-active:text-primary text-slate-400"
           >
@@ -130,6 +139,10 @@ export default function SettingsPage() {
 
         <TabsContent value="members">
           <MembersTab />
+        </TabsContent>
+
+        <TabsContent value="quick-replies">
+          <QuickReplyManager />
         </TabsContent>
       </Tabs>
     </div>
